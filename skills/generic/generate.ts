@@ -15,11 +15,11 @@ const HarnessClaude = {
     headers: {
         discover: `---
 name: hotkeyless-ahk-discover
-description: Discover available AutoHotkey commands from the Hotkeyless AHK server.
+description: Discover available automation commands on the user's Windows machine via the Hotkeyless AHK HTTP server. Use when the user asks what desktop automation, hotkeys, or AHK commands are available, or before invoking any Hotkeyless AHK command for the first time.
 ---`,
         invoke: `---
 name: hotkeyless-ahk-invoke
-description: Invoke a specific AutoHotkey command on the Hotkeyless AHK server.
+description: Invoke desktop automation commands on the user's Windows machine via the Hotkeyless AHK HTTP server. Use when the user asks to open programs, press hotkeys, move the mouse, control media, or perform any desktop action. Requires discovering commands first using the hotkeyless-ahk-discovering skill.
 ---`,
     },
 }
@@ -30,11 +30,11 @@ const HarnessOpenCode = {
     headers: {
         discover: `---
 name: hotkeyless-ahk-discover
-description: Discover available AutoHotkey commands from the Hotkeyless AHK server.
+description: Discover available automation commands on the user's Windows machine via the Hotkeyless AHK HTTP server. Use when the user asks what desktop automation, hotkeys, or AHK commands are available, or before invoking any Hotkeyless AHK command for the first time.
 ---`,
         invoke: `---
 name: hotkeyless-ahk-invoke
-description: Invoke a specific AutoHotkey command on the Hotkeyless AHK server.
+description: Invoke desktop automation commands on the user's Windows machine via the Hotkeyless AHK HTTP server. Use when the user asks to open programs, press hotkeys, move the mouse, control media, or perform any desktop action. Requires discovering commands first using the hotkeyless-ahk-discovering skill.
 ---`,
     },
 }

@@ -19,9 +19,8 @@ examples/       # End-to-end usage examples
 
 1. [MCP server](#mcp-server)
   - [Quick start](#quick-start)
-  - [Hotkeyless API contract used](#hotkeyless-api-contract-used)
+  - [Hotkeyless AHK API contract](#hotkeyless-ahk-api-contract)
   - [Configuration](#configuration)
-  - [Run MCP server](#run-mcp-server)
 2. [Agent skills](#agent-skills)
   - [Quick start](#quick-start-1)
 
@@ -31,7 +30,7 @@ examples/       # End-to-end usage examples
 
 ### Quick start
 
-#### Build server
+#### 1. Build server
 
 ```bash
 bun install
@@ -40,7 +39,7 @@ bun run build
 
 `npm` should also work without problems!
 
-#### Setup your harness
+#### 2. Setup your harness
 
 ##### OpenCode
 
@@ -106,7 +105,7 @@ bun run build
 }
 ```
 
-### Hotkeyless AHK API contract used
+### Hotkeyless AHK API contract
 
 - `GET /list` returns JSON array of `{ command: string, note: string }`
 - `GET /send/<command>` accepts query parameters
@@ -130,3 +129,35 @@ Environment overrides:
 
 ### Quick start
 
+#### OpenCode
+
+1. Copy the `./skills/.opencode/...` folders to
+  - `.opencode/skills` for project specific skill setup
+  - `%USERPROFILE%/.config/opencode/skills` for global setup
+2. You can adjust AGENTS.md, custom subagents or custom commands to reference the skills
+3. Restart your OpenCode (CLI or Desktop)
+4. When asking the agent to use the "hotkeyless AHK skills" it should now use the skill guide
+
+#### ClaudeCode
+
+1. Copy the `./skills/.claude/...` folders to
+  - `.claude/skills` for project specific skill setup
+  - `%USERPROFILE%/.config/claude-code/skills` for global setup
+2. You can adjust CLAUDE.md, custom subagents or custom commands to reference the skills
+3. Restart your Claude Code
+4. When asking the agent to use the "hotkeyless AHK skills" it should now use the skill guide
+
+#### Github Copilot
+
+1. Copy the `./skills/.claude/...` folders to
+  - `.claude/skills` for project specific skill setup
+  - `%USERPROFILE%/.config/claude-code/skills` for global setup
+2. You can adjust AGENTS.md, custom subagents or custom commands to reference the skills
+3. Restart your Claude Code
+4. When asking the agent to use the "hotkeyless AHK skills" it should now use the skill guide
+
+---
+
+## License
+
+[MIT](./LICENSE.md)
