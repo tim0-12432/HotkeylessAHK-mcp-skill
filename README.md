@@ -1,5 +1,12 @@
 # Hotkeyless AHK MCP and Skills
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![AHK Version](https://img.shields.io/badge/AHK%20Version-v2-green)](https://www.autohotkey.com/docs/v2/)
+[![MCP](https://img.shields.io/badge/MCP%20Version-1.29.0-purple)](https://github.com/modelcontextprotocol/typescript-sdk)
+[![Claude Support](https://img.shields.io/badge/Claude-D97757?logo=Claude&logoColor=white)](https://code.claude.com/docs/en/skills)
+[![OpenCode Support](https://img.shields.io/badge/OpenCode-0A0A23)](https://opencode.ai/docs/skills/)
+[![Github Copilot Support](https://img.shields.io/badge/GitHub%20Copilot-8957E5?logo=github-copilot)](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+
 This repository provides:
 
 - A TypeScript MCP server that wraps the [Hotkeyless AHK](https://github.com/sebinside/HotkeylessAHK) HTTP API.
