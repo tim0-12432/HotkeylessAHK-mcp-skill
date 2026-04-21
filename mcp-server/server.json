@@ -1,0 +1,66 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.tim0-12432/HotkeylessAHK-mcp-skill",
+  "description": "MCP server for Hotkeyless AHK HTTP API.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registry_type": "npm",
+      "registry_base_url": "https://registry.npmjs.org",
+      "identifier": "@tim0-12432/hotkeyless-ahk-mcp-server",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "description": "The base URL of the Hotkeyless AHK HTTP server.",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "BASE_URL"
+        },
+        {
+          "description": "The timeout in milliseconds for requests to the server.",
+          "is_required": false,
+          "format": "number",
+          "is_secret": false,
+          "name": "TIMEOUT_MS"
+        },
+        {
+          "description": "A comma-separated list of blacklisted commands.",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "BLACKLIST"
+        },
+        {
+          "description": "The time-to-live in milliseconds for cached responses.",
+          "is_required": false,
+          "format": "number",
+          "is_secret": false,
+          "name": "CACHE_TTL_MS"
+        },
+        {
+          "description": "The default endpoint path for listing commands.",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "ENDPOINT_LIST"
+        },
+        {
+          "description": "The default endpoint path for triggering commands.",
+          "is_required": false,
+          "format": "string",
+          "is_secret": false,
+          "name": "ENDPOINT_TRIGGER"
+        }
+      ]
+    }
+  ]
+}
