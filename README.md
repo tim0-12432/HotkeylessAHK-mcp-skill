@@ -37,6 +37,75 @@ examples/       # End-to-end usage examples
 
 ### Quick start
 
+#### OpenCode
+
+**`opencode.json`:**
+```json
+{
+  ...
+  "mcp": {
+    ...
+    "hotkeyless-ahk": {
+      "type": "local",
+      "command": ["npx", "@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "enabled": true,
+      "environment": {
+          "BLACKLIST": "shutdown,restart,kill"
+          ...
+      }
+    }
+  },
+  ...
+}
+```
+
+#### ClaudeCode
+
+**`.mcp.json`:**
+```json
+{
+  "mcpServers": {
+    ...
+    "hotkeyless-ahk": {
+      "command": "npx",
+      "args": ["@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "env": {
+        "BLACKLIST": "shutdown,restart,kill"
+        ...
+      }
+    }
+  }
+}
+```
+
+#### Github Copilot
+
+**`mcp-config.json`:**
+```json
+{
+  ...
+  "mcpServers": {
+    ...
+    "hotkeyless-ahk": {
+      "type": "local",
+      "command": "npx",
+      "args": ["@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "env": {
+        "BLACKLIST": "shutdown,restart,kill"
+          ...
+      },
+      "tools": ["*"]
+    }
+  },
+  ...
+}
+```
+
+### Build from source
+
+<details>
+<summary>Follow instructions here.</summary>
+
 #### 1. Build server
 
 ```bash
@@ -111,6 +180,8 @@ bun run build
   ...
 }
 ```
+
+</details>
 
 ### Hotkeyless AHK API contract
 

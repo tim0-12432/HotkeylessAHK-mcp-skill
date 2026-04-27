@@ -6,3 +6,5 @@ coverage/
 Thumbs.db
 mcp-publisher.exe
 .mcpregistry_*
+mcp-server/README*
+mcp-server/LICENSE*

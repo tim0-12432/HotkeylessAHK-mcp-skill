@@ -1,22 +1,47 @@
 {
-  "name": "@tim0-12432/hotkeyless-ahk-mcp-server",
-  "version": "1.0.0",
+  "name": "@tim0_12432/hotkeyless-ahk-mcp-server",
+  "version": "1.0.1",
   "mcpName": "io.github.tim0-12432/HotkeylessAHK-mcp-skill",
-  "private": true,
+  "private": false,
   "description": "MCP server for Hotkeyless AHK HTTP API.",
+  "keywords": [
+    "MCP",
+    "Agent Skills",
+    "Auto Hotkey",
+    "AHK",
+    "Hotkeyless AHK"
+  ],
+  "author": {
+    "name": "Tim0_12432",
+    "url": "https://github.com/tim0-12432"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill"
+  },
+  "bugs": {
+    "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE.md",
+    "README.md"
   ],
   "scripts": {
     "typecheck": "tsgo -p tsconfig.json",
-    "build": "vite build",
+    "build": "vite build && npm run copy",
     "clean": "node -e \"import('node:fs').then((fs) => fs.rmSync('dist', { recursive: true, force: true }))\"",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "publish:mcp": "../mcp-publisher.exe publish"
+    "publish:mcp": "../mcp-publisher.exe publish",
+    "copy": "node -e \"import('node:fs').then((fs) => {fs.copyFileSync('../LICENSE.md', 'LICENSE.md');fs.copyFileSync('../README.md', 'README.md')})\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0"
@@ -25,6 +50,7 @@
     "@types/node": "^25.5.2",
     "@typescript/native-preview": "^7.0.0-dev.20260406.1",
     "vite": "^8.0.5",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
   }
 }

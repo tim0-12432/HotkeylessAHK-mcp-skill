@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
     build: {
@@ -14,5 +15,12 @@ export default defineConfig({
             // Don't bundle node built-ins or your SDK dependency into the file
             external: ['@modelcontextprotocol/sdk', /^node:/] 
         }
-    }
+    },
+    plugins: [
+        dts({
+            tsconfigPath: './tsconfig.json',
+            insertTypesEntry: true,
+            rollupTypes: true
+        })
+    ]
 })
