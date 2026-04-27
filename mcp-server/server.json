@@ -1,19 +1,17 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.tim0-12432/HotkeylessAHK-mcp-skill",
   "description": "MCP server for Hotkeyless AHK HTTP API.",
-  "status": "active",
   "repository": {
     "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packages": [
     {
-      "registry_type": "npm",
-      "registry_base_url": "https://registry.npmjs.org",
-      "identifier": "@tim0-12432/hotkeyless-ahk-mcp-server",
-      "version": "1.0.0",
+      "registryType": "npm",
+      "identifier": "@tim0_12432/hotkeyless-ahk-mcp-server",
+      "version": "1.0.1",
       "transport": {
         "type": "stdio"
       },
