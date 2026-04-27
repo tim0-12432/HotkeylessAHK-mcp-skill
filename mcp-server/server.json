@@ -6,7 +6,7 @@
     "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill",
     "source": "github"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packages": [
     {
       "registryType": "npm",
@@ -15,7 +15,7 @@
       "transport": {
         "type": "stdio"
       },
-      "environment_variables": [
+      "environmentVariables": [
         {
           "description": "The base URL of the Hotkeyless AHK HTTP server.",
           "is_required": false,
