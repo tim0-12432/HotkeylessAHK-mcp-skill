@@ -47,7 +47,7 @@ examples/       # End-to-end usage examples
     ...
     "hotkeyless-ahk": {
       "type": "local",
-      "command": ["npx", "@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "command": ["npx", "-y", "@tim0_12432/hotkeyless-ahk-mcp-server"],
       "enabled": true,
       "environment": {
           "BLACKLIST": "shutdown,restart,kill"
@@ -68,7 +68,7 @@ examples/       # End-to-end usage examples
     ...
     "hotkeyless-ahk": {
       "command": "npx",
-      "args": ["@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "args": ["-y", "@tim0_12432/hotkeyless-ahk-mcp-server"],
       "env": {
         "BLACKLIST": "shutdown,restart,kill"
         ...
@@ -89,7 +89,7 @@ examples/       # End-to-end usage examples
     "hotkeyless-ahk": {
       "type": "local",
       "command": "npx",
-      "args": ["@tim0_12432/hotkeyless-ahk-mcp-server"],
+      "args": ["-y", "@tim0_12432/hotkeyless-ahk-mcp-server"],
       "env": {
         "BLACKLIST": "shutdown,restart,kill"
           ...
