@@ -19,9 +19,10 @@ jobs:
           fetch-depth: 0
       - name: Install Node.js and pnpm
         uses: pnpm/setup@v2
-        working-directory: ./mcp-server
         with:
-          cache: true
+          install: false
+      - name: Install dependencies
+        run: pnpm ci
       - name: Install mcp-publisher
         run: |
           curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
@@ -37,11 +38,7 @@ jobs:
           pnpm version ${{ steps.get_version.outputs.version }} --no-git-tag-version --no-git-checks
           jq --arg version "${{ steps.get_version.outputs.version }}" '.version = $version' server.json > server.tmp && mv server.tmp server.json
       - name: Publish package to NPM
-        run: |
-          pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          pnpm publish --provenance --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --provenance --access public --no-git-checks
       - name: Publish server to MCP Registry
         run: ./mcp-publisher publish
       - name: Release package
