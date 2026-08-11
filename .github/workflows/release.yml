@@ -34,13 +34,13 @@ jobs:
       - name: Get version from tag
         id: get_version
         run: |
-          TAG=${GITHUB_REF#refs/tags/}
-          if [[ "$TAG" =~ ^v?([0-9]+\.[0-9]+\.[0-9]+)(\.|-) ]]; then
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          if [[ "$VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
             VERSION="${BASH_REMATCH[1]}"
           else
-            VERSION="${TAG#v}"       # Fallback: remove 'v' prefix if no match
-            VERSION="${VERSION%%-*}" # Remove suffix after '-'
-            VERSION="${VERSION%.*}"  # Remove everything after last '.' if needed
+            VERSION="${VERSION%%-*}"  # Remove everything after '-'
+            VERSION="${VERSION%%.*}"  # Remove everything after first '.'
           fi
           echo "Extracted version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
