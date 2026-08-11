@@ -47,7 +47,9 @@ jobs:
       - name: Set package version
         run: |
           pnpm version ${{ steps.get_version.outputs.version }} --no-git-tag-version --no-git-checks
-          jq --arg version "${{ steps.get_version.outputs.version }}" '.version = $version' server.json > server.tmp && mv server.tmp server.json
+          jq --arg version "${{ steps.get_version.outputs.version }}" \
+            '.version = $version | .packages[0].version = $version' \
+            server.json > server.tmp && mv server.tmp server.json
       - name: Publish package to NPM
         run: pnpm publish --provenance --access public --no-git-checks
       - name: Publish server to MCP Registry
