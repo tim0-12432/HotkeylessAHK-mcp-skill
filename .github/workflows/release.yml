@@ -65,6 +65,5 @@ jobs:
             - https://registry.modelcontextprotocol.io/v0.1/servers/io.github.tim0-12432%2FHotkeylessAHK-mcp-skill/versions/${{ steps.get_version.outputs.version }}
             - https://glama.ai/mcp/servers/tim0-12432/HotkeylessAHK-mcp-skill
 
-            **Full Changelog**:
           generate_release_notes: true
           make_latest: true
