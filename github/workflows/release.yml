@@ -1,0 +1,60 @@
+name: Release MCP Server
+on:
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    defaults:
+      run:
+        working-directory: ./mcp-server
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Install Node.js and pnpm
+        uses: pnpm/setup@v2
+        working-directory: ./mcp-server
+        with:
+          cache: true
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+      - name: Build package
+        run: pnpm build
+      - name: Get version from tag
+        id: get_version
+        uses: jannemattila/get-version-from-tag@v4
+      - name: Set package version
+        run: |
+          pnpm version ${{ steps.get_version.outputs.version }} --no-git-tag-version --no-git-checks
+          jq --arg version "${{ steps.get_version.outputs.version }}" '.version = $version' server.json > server.tmp && mv server.tmp server.json
+      - name: Publish package to NPM
+        run: |
+          pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+          pnpm publish --provenance --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish
+      - name: Release package
+        uses: softprops/action-gh-release@v3
+        with:
+          body: |
+            **Official NPM page**:
+            - https://www.npmjs.com/package/@tim0_12432/hotkeyless-ahk-mcp-server/v/${{ steps.get_version.outputs.version }}
+            
+            **Use MCP through**:
+            - https://registry.modelcontextprotocol.io/v0.1/servers/io.github.tim0-12432%2FHotkeylessAHK-mcp-skill/versions/${{ steps.get_version.outputs.version }}
+            - https://glama.ai/mcp/servers/tim0-12432/HotkeylessAHK-mcp-skill
+
+            **Full Changelog**:
+          generate_release_notes: true
+          make_latest: true

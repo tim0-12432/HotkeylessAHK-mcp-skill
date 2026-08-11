@@ -2,7 +2,7 @@ import { CommandBlockedError, CommandDiscoveryService, CommandExecutionService, 
 import { BackendUnavailableError, formatErrorBodyPreview, MalformedResponseError, RequestFailedError, UnsupportedEndpointError } from "@/infrastructure/hotkeyless-ahk";
 import { logError, logInfo } from "@/infrastructure/logging";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
-import * as z from 'zod/v3';
+import { z } from 'zod';
 
 
 function toErrorResult(error: unknown): { isError: boolean; content: Array<{ type: 'text'; text: string }> } {

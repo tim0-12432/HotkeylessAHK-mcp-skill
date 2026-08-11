@@ -6,12 +6,12 @@
     "url": "https://github.com/tim0-12432/HotkeylessAHK-mcp-skill",
     "source": "github"
   },
-  "version": "1.0.3",
+  "version": "9.9.9",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@tim0_12432/hotkeyless-ahk-mcp-server",
-      "version": "1.0.3",
+      "version": "9.9.9",
       "transport": {
         "type": "stdio"
       },
