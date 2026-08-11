@@ -33,7 +33,17 @@ jobs:
         run: pnpm build
       - name: Get version from tag
         id: get_version
-        uses: jannemattila/get-version-from-tag@v4
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          if [[ "$TAG" =~ ^v?([0-9]+\.[0-9]+\.[0-9]+)(\.|-) ]]; then
+            VERSION="${BASH_REMATCH[1]}"
+          else
+            VERSION="${TAG#v}"       # Fallback: remove 'v' prefix if no match
+            VERSION="${VERSION%%-*}" # Remove suffix after '-'
+            VERSION="${VERSION%.*}"  # Remove everything after last '.' if needed
+          fi
+          echo "Extracted version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
       - name: Set package version
         run: |
           pnpm version ${{ steps.get_version.outputs.version }} --no-git-tag-version --no-git-checks
